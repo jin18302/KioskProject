@@ -1,7 +1,6 @@
-package BasicLevel4_5;
+package ChallengeLevel1;
 
-
-import java.util.*;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,11 +13,10 @@ public class Main {
         );
 
 
-        Menu drinks = new Menu("Drinks",
-                Arrays.asList(new MenuItem("사이다", 1500),
-                              new MenuItem("콜라", 1500),
-                              new MenuItem("제로콜라", 2000),
-                              new MenuItem("밀크쉐이크", 3000))
+        Menu drinks = new Menu("Drinks", Arrays.asList(new MenuItem("사이다", 1500),
+                new MenuItem("콜라", 1500),
+                new MenuItem("제로콜라", 2000),
+                new MenuItem("밀크쉐이크", 3000))
         );
 
 

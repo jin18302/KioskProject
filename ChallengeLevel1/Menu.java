@@ -1,11 +1,13 @@
-package BasicLevel4_5;
+package ChallengeLevel1;
 
-import java.util.*;
 
+import java.util.Iterator;
+import java.util.List;
 
 public class Menu {
     private String Category;
     private List<MenuItem> MenuItemList;
+    int size=MenuItemList.size();
 
     public Menu(String Category,List<MenuItem> itemList) {
         this.Category = Category;
@@ -27,13 +29,5 @@ public class Menu {
     public String GetCategory() {
         return Category;
     }
-
-   MenuItem GetItem(int index){
-       return MenuItemList.get(index);
-   }
-
-   int GetSize(){
-        return MenuItemList.size();
-   }
 
 }

@@ -24,18 +24,18 @@ public class Kiosk {
             }
             System.out.println();
 
-            int input = sc.nextInt();
-            if (1 <= input && input <= MenuList.size()) {
-                System.out.println("-----------------------------" + MenuList.get(input - 1).GetCategory() + "------------------------   (뒤로가기5, 종료0)");
-                MenuList.get(input - 1).GetItemList();//카테고리별 메뉴출력
-            } else if (input == 0) break;
+            int input = sc.nextInt()-1;
+            if (0 <= input && input < MenuList.size()) {
+                System.out.println("-----------------------------" + MenuList.get(input).GetCategory() + "------------------------   (뒤로가기5, 종료0)");
+                MenuList.get(input).GetItemList();//카테고리별 메뉴출력
+            } else if (input == -1) break;
 
 
-            input = sc.nextInt();
-            if (1 <= input && input <= MenuList.get(input - 1).size) {
-                System.out.println(input + "번 을 선택하셨습니다");
-            } else if (input == 5) continue;
-            else if (input == 0) break;
+           int input2 = sc.nextInt();           //menu.1보다 크거나, 번호보다 같아면
+            if (1 <= input2 && input2 <= MenuList.get(input).GetSize()) {
+                System.out.println("선택한메뉴:"+MenuList.get(input).GetItem(input2-1).GetItemIntroduce());
+            } else if (input2 == 5) continue;
+            else if (input2 == 0) break;
         }
         System.exit(0);
     }
