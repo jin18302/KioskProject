@@ -23,11 +23,11 @@ public class MenuItem {
         return Name;
     }
 
-    public String GetItemIntroduce() {
+    public String GetItemInfo() {
         return String.format("%-5s |  %4d원  |  %-20s%n", this.Name, this.Price, this.introduce);
     }
 
-    public int GetPrice(){
+    public int GetPrice() {
         return Price;
     }
 }

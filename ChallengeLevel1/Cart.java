@@ -11,8 +11,9 @@ public class Cart {
 
     public void GetCart() {
         for (MenuItem item : list) {
-            System.out.println(item.GetItemIntroduce());
+            System.out.print(item.GetItemInfo());
         }
+        System.out.println(GetToTal()+"원");
     }
 
     int GetToTal() {
@@ -22,6 +23,4 @@ public class Cart {
     void CartReset() {
         list.clear();
     }
-
-
 }
