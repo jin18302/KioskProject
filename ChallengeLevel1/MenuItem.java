@@ -24,7 +24,7 @@ public class MenuItem {
     }
 
     public String GetItemIntroduce() {
-        return String.format(" %5s  |  %4d원  |  %-20s%n", this.Name, this.Price, this.introduce);
+        return String.format("%-5s |  %4d원  |  %-20s%n", this.Name, this.Price, this.introduce);
     }
 
     public int GetPrice(){
