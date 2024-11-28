@@ -1,7 +1,5 @@
 package ChallengeLevel1;
 
-
-import java.util.Iterator;
 import java.util.List;
 
 public class Menu {
@@ -18,8 +16,9 @@ public class Menu {
     }
 
     public void GetItemList() {
+        int Num=1;
        for(MenuItem item: MenuItemList){
-           System.out.print(item.GetItemInfo());
+           System.out.print((Num++)+". "+item.GetItemInfo());
        }
     }
 

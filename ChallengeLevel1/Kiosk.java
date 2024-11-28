@@ -8,6 +8,9 @@ public class Kiosk {
     private List<Menu> MenuList = new ArrayList<>();
     Cart cart = new Cart();
     boolean CartEmpty = true;
+    Menu ChoiceMenu;
+    MenuItem ChoiceMenuItem;
+
 
     public void setMenuList(Menu... menu) {
         for (Menu m : menu) {
@@ -15,32 +18,48 @@ public class Kiosk {
         }
     }
 
+
     public void start() {
-        while (true) {
+        int input = 0;
+        int input2 = 0;
+       Loop1: while (true) {
             System.out.println("[  MainMenu  ] 종료0");
+            int Num = 1;
             for (Menu menu : MenuList) {
-                System.out.println(menu.GetCategory());
+                System.out.println((Num++) + ". " + menu.GetCategory());
             }
-            int input = sc.nextInt();//카테고리를 입력받음
+            input = sc.nextInt();
             if (1 <= input && input <= MenuList.size()) {
-                System.out.println("-----------------------------"+MenuList.get(input - 1).GetCategory()+"-----------------------------");
+                ChoiceMenu = MenuList.get(input - 1);
+                System.out.println("-----------------------------" + ChoiceMenu.GetCategory() + "------------------------  0:뒤로가기");
                 MenuList.get(input - 1).GetItemList();
             } else if (input == 0) {
                 System.exit(0);
             } else {
-                System.out.println("유효하지 않은 숫자입니다.다시 입력해주세요");
-                continue;
-            }//카테고리를 출력하고, 카테고리들 중 선택
+                try {
+                    throw new Exception("지원하지 않는 기능입니다");
+                } catch (Exception e) {
+                    System.out.println("다시 입력해주세요");
+                    continue;
+                }
+            }//카테고리들 중 선택, 카테고리의 메뉴리스트를 출력함
 
-
-            int input2 = sc.nextInt();
-            if (1 <= input && input <= MenuList.get(input - 1).GetSize()) {
-                System.out.println(MenuList.get(input - 1).GetItem(input2 - 1).GetItemInfo());
-            } else if (input2 == 0) {
-                continue;//메뉴를 선택
-            } else {
-                System.out.println("유효하지 않은 숫자입니다.다시 입력해주세요");
-                continue;
+            while (true) {
+                input2 = sc.nextInt();
+                if (1 <= input && input <= ChoiceMenu.GetSize()) {
+                    ChoiceMenuItem = ChoiceMenu.GetItem(input2 - 1);
+                    System.out.println(ChoiceMenuItem.GetItemInfo());
+                    break;
+                } else if (input2 == 0) {
+                    continue Loop1;
+                } else {
+                    try {
+                        throw new Exception("지원하지않는 기능입니다");
+                    } catch (Exception e) {
+                        System.out.println("다시입력해주세요");
+                        continue;
+                    }
+                }
             }
 
 
@@ -49,7 +68,7 @@ public class Kiosk {
 
             input = sc.nextInt();
             if (input == 1) {
-                cart.SetCart(MenuList.get(input - 1).GetItem(input2 - 1));
+                cart.SetCart(ChoiceMenuItem);
                 CartEmpty = false;
             } else if (input2 == 2) {
                 continue;
